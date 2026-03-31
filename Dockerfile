@@ -35,6 +35,16 @@ RUN ansible.sh pvlogging
 COPY ibek-support/autosave/ autosave
 RUN ansible.sh autosave
 
+# Add support modules specific to this generic IOC
+COPY ibek-support/asyn/ asyn
+RUN ansible.sh asyn
+
+COPY ibek-support/motor/ motor
+RUN ansible.sh motor
+
+COPY ibek-support/motorNewFocus/ motorNewFocus
+RUN ansible.sh motorNewFocus
+
 # get the ioc source and build it
 COPY ioc ${SOURCE_FOLDER}/ioc
 RUN ansible.sh ioc
